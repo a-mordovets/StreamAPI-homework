@@ -13,7 +13,10 @@ public class Assignments {
      * @return String
      */
     public static String task1(List<String> names) {
-        return null;
+        return IntStream.range(0, names.length())
+                .filter(i -> i % 2 == 1)
+                .mapToObj(i -> i + ". " + names[i])
+                .collect(Collectors.joining(", "))
     }
 
     /**
@@ -24,7 +27,10 @@ public class Assignments {
      * @return список рядків у верхньому регістрі, відсортованих за спаданням
      */
     public static List<String> task2(List<String> items) {
-        return null;
+        return items.stream()
+                .map(item -> item[0].toUpperCase() + item.substring(1))
+                .sorted(Comparator.reversedOrder())
+                .collect(Collectors.toList())
     }
 
     /**
@@ -36,7 +42,13 @@ public class Assignments {
      * @return рядок з відсортованими числами, розділеними комами
      */
     public static String task3(String[] array) {
-        return null;
+        return Arrays.stream(array)
+                .flatMap(str -> Arrays.stream(str.split(",")))
+                .map(String::trim)
+                .map(Integer::parseInt)
+                .sorted()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
     }
 
     /**
@@ -52,7 +64,7 @@ public class Assignments {
      * @return безкінечний стрім випадкових чисел
      */
     public static Stream<Long> task4(long a, long c, long m, long seed) {
-        return null;
+        return Stream.iterate(seed, x -> (a * x + c) % m);
     }
 
     /**
