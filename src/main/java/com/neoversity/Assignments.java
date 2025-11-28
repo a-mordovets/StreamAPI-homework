@@ -13,10 +13,10 @@ public class Assignments {
      * @return String
      */
     public static String task1(List<String> names) {
-        return IntStream.range(0, names.length())
-                .filter(i -> i % 2 == 1)
-                .mapToObj(i -> i + ". " + names[i])
-                .collect(Collectors.joining(", "));
+        return IntStream.range(0, names.size())
+            .filter(i -> i % 2 == 1)
+            .mapToObj(i -> i + ". " + names.get(i))
+            .collect(Collectors.joining(", "));
     }
 
     /**
@@ -28,9 +28,9 @@ public class Assignments {
      */
     public static List<String> task2(List<String> items) {
         return items.stream()
-                .map(item -> item[0].toUpperCase() + item.substring(1))
-                .sorted(Comparator.reversedOrder())
-                .collect(Collectors.toList());
+            .map(String::toUpperCase)
+            .sorted(Comparator.reverseOrder())
+            .collect(Collectors.toList());
     }
 
     /**
