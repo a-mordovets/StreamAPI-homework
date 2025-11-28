@@ -78,6 +78,13 @@ public class Assignments {
      * @return чергований стрім
      */
     public static <T> Stream<T> task5(Stream<T> first, Stream<T> second) {
-        return null;
+        List<T> firstList = first.collect(Collectors.toList());
+        List<T> secondList = second.collect(Collectors.toList());
+
+        int size = Math.min(firstList.size(), secondList.size()); // зупиняємося, коли один зі списків закінчився
+
+        return IntStream.range(0, size)
+                .boxed() // перетворюємо IntStream -> Stream<Integer>
+                .flatMap(i -> Stream.of(firstList.get(i), secondList.get(i))); // чергування
     }
 }
