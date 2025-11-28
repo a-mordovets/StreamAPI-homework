@@ -16,7 +16,7 @@ public class Assignments {
         return IntStream.range(0, names.length())
                 .filter(i -> i % 2 == 1)
                 .mapToObj(i -> i + ". " + names[i])
-                .collect(Collectors.joining(", "))
+                .collect(Collectors.joining(", "));
     }
 
     /**
@@ -30,7 +30,7 @@ public class Assignments {
         return items.stream()
                 .map(item -> item[0].toUpperCase() + item.substring(1))
                 .sorted(Comparator.reversedOrder())
-                .collect(Collectors.toList())
+                .collect(Collectors.toList());
     }
 
     /**
